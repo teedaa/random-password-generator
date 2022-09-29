@@ -6,8 +6,8 @@ function generatePassword(){
   password=""
   var userInput = prompt("How many characters do you want your password to be? Enter a number between 8-128.")
   var passwordLength = (userInput);
-  if (passwordLength < 8 || passwordLength > 128){
-    alert("Length is invalid");
+  if (passwordLength < 8 || passwordLength > 128 || isNaN(passwordLength)){
+    alert("Length or charcter is invalid");
     return false;
 
   }
@@ -16,8 +16,6 @@ function generatePassword(){
    var includeUpper = confirm("Do you want to include upper case?");
    var includeLower = confirm("Do you want to include lower case?");
 
-   var numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
-   var special = ["\\", "/", '\"', ".", "?", "!", "@", "#", "$", "%", "^," , "*", "(", ")", "-", "+"];
    var numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
    var special = ["\\", "/", '\"', ".", "?", "!", "@", "#", "$", "%", "^", "&" , "*", "(", ")", "-", "+"];
    var upper = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
@@ -28,20 +26,23 @@ function generatePassword(){
     choice.push(numbers);
    }
    if (includeSpecial === true) {
-    choice.push(special)
+    choice.push(special);
    }
    if (includeUpper === true) {
-    choice.push(upper)
+    choice.push(upper);
    }
    if (includeLower === true) {
-    choice.push(lower)
-   }
-   console.log(choice)
-  }
+    choice.push(lower);
 
+    var password = ""
+    for (var i = 0; i < passwordLength; i++) {
+      password = password + choice [Math.floor(Math.random() * choice.length)] ;
+    }
+    return password;
+  }
+}
 
 function writePassword() {
-  
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
   
