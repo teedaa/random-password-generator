@@ -6,10 +6,14 @@ function generatePassword(){
   var userInput = prompt("How many characters do you want your password to be? Enter a number between 8-128.")
   var passwordLength = (userInput);
   if (passwordLength < 8 || passwordLength > 128){
-    alert("Length is invalid")
+    alert("Length is invalid");
+    return
 
   }
-
+   var includeNumbers = confirm("Do you want to include numbers?");
+   var includeSpecial = confirm("Do you want to include special characters?");
+   var includeUpper = confirm("Do you want to include upper case?");
+   var includeLower = confirm("Do you want lower case?")
 }
 
 
