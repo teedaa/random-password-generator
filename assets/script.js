@@ -2,7 +2,7 @@
 var generateBtn = document.querySelector("#generate");
 
 
-
+// function to generate randomized password
 function generatePassword(){
   password=""
   var userInput = prompt("How many characters do you want your password to be? Enter a number between 8-128.")
@@ -11,17 +11,20 @@ function generatePassword(){
     alert("Length or character is invalid");
     return false;
 
+// password criteria variables
   }
    var includeNumbers = confirm("Do you want to include numbers?");
    var includeSpecial = confirm("Do you want to include special characters?");
    var includeUpper = confirm("Do you want to include upper case?");
    var includeLower = confirm("Do you want to include lower case?");
 
+//password option arrays
    var numbers = ["0","1","2","3","4","5","6","7","8","9"];
    var special = ["\\", "/", '\"', ".", "?", "!", "@", "#", "$", "%", "^", "&" , "*", "-", "+"];
    var upper = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
    var lower = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
   
+   //function to push selected variables to create password
    var choice = []
    if (includeNumbers === true) {
     choice.push(numbers);
@@ -36,6 +39,7 @@ function generatePassword(){
     choice.push(lower);
    }
  
+//function to access nested array and return final randomized password
   var passwordInput = "";
     for (var i = 0; i < passwordLength; i++) {
         outerIndex = Math.floor(Math.random() * choice.length);
